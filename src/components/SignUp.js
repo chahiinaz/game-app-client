@@ -50,7 +50,7 @@ class SignUp extends Component {
 
         <div>
           <nav>
-            Don't have an account?
+            Already have an account?
             <br />
             <Link to="/login">Click here to log in!</Link>
           </nav>
