@@ -10,8 +10,7 @@ export function login(name, password) {
       }
     })
       .then(data => {
-        console.log("dataaaa", data);
-        dispatch(userLoggedIn(data.jwt));
+        dispatch(userLoggedIn(data.jwt, data.name));
       })
       .catch(err => console.log("Error!", err));
   };
