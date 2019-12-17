@@ -7,7 +7,7 @@ class Lobby extends Component {
   state = {
     text: ""
   };
-  url = "http://localhost:4000";
+  url = "https://intense-brushlands-43540.herokuapp.com";
   stream = new EventSource(`${this.url}/stream`);
 
   reset = () => {
