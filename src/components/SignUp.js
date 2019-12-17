@@ -20,7 +20,6 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log("states", this.state);
     return (
       <div>
         <h1>Signup here!</h1>
@@ -47,7 +46,6 @@ class SignUp extends Component {
             </p>
           </form>
         </div>
-
         <div>
           <nav>
             Already have an account?
