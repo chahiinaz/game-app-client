@@ -13,6 +13,9 @@ class Toolbar extends Component {
         <nav>
           <Link to="/login">Log in</Link>
         </nav>
+        <nav>
+          <Link to="/">Start a new lobby!</Link>
+        </nav>
 
         <nav>
           {this.props.data.name && (
@@ -25,9 +28,9 @@ class Toolbar extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  console.log("reduxState", reduxState);
+  // console.log("reduxState", reduxState);
   return {
-    data: reduxState.loginReducer
+    data: reduxState.auth
   };
 }
 export default connect(mapStateToProps)(Toolbar);
