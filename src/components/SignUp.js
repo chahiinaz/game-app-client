@@ -20,6 +20,9 @@ class SignUp extends Component {
   };
 
   render() {
+    if (this.props.data.jwt) {
+      return <p>Signed up succesfully!</p>;
+    }
     return (
       <div>
         <h1>Signup here!</h1>
@@ -59,4 +62,14 @@ class SignUp extends Component {
 }
 
 
-export default connect()(SignUp);
+
+
+function mapStateToProps(reduxState) {
+  console.log("reduxState in signup:", reduxState);
+  return {
+    data: reduxState.signUpReducer
+  };
+}
+
+export default connect(mapStateToProps)(SignUp);
+
