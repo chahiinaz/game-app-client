@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import superagent from "superagent";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Lobby extends Component {
   state = {
@@ -36,7 +37,18 @@ class Lobby extends Component {
     const list = gameRoom.map(gameRoom => (
       <p key={gameRoom.id}>{gameRoom.name}</p>
     ));
-
+    if (!this.props.jwt) {
+      return (
+        <div>
+          <Link to="/signup">
+            <h2>Please sign up to enter lobby</h2>
+          </Link>
+          <Link to="/login">
+            <h2>Login if you already have an account</h2>
+          </Link>
+        </div>
+      );
+    }
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -51,7 +63,8 @@ class Lobby extends Component {
 function mapStateToProps(reduxstate) {
   console.log("app reduxstate", reduxstate);
   return {
-    gameRoom: reduxstate.lobbyReducer
+    gameRoom: reduxstate.lobbyReducer,
+    jwt: reduxstate.loginReducer.jwt
   };
 }
 
