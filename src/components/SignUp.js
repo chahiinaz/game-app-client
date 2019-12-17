@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signUp } from "../signup/actions";
+import { signUp } from "../login/actions";
 import { Link } from "react-router-dom";
 
 class SignUp extends Component {
@@ -21,7 +21,7 @@ class SignUp extends Component {
 
   render() {
     if (this.props.data.jwt) {
-      return <p>Signed up succesfully!</p>;
+      return <p>Logged in succesfully!</p>;
     }
     return (
       <div>
@@ -61,15 +61,11 @@ class SignUp extends Component {
   }
 }
 
-
-
-
 function mapStateToProps(reduxState) {
-  console.log("reduxState in signup:", reduxState);
+  // console.log("reduxState in signup:", reduxState);
   return {
-    data: reduxState.signUpReducer
+    data: reduxState.auth
   };
 }
 
 export default connect(mapStateToProps)(SignUp);
-

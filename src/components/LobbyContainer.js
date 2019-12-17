@@ -32,7 +32,7 @@ class Lobby extends Component {
     this.setState({ text: value });
   };
   render() {
-    console.log("this.props", this.props);
+    // console.log("this.props", this.props);
     const { gameRoom } = this.props;
     const list = gameRoom.map(gameRoom => (
       <p key={gameRoom.id}>{gameRoom.name}</p>
@@ -61,10 +61,10 @@ class Lobby extends Component {
   }
 }
 function mapStateToProps(reduxstate) {
-  console.log("app reduxstate", reduxstate);
+  // console.log("app reduxstate", reduxstate);
   return {
     gameRoom: reduxstate.lobbyReducer,
-    jwt: reduxstate.loginReducer.jwt
+    jwt: reduxstate.auth.jwt
   };
 }
 
