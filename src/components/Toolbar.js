@@ -13,6 +13,9 @@ class Toolbar extends Component {
         <nav>
           <Link to="/login">Log in</Link>
         </nav>
+        <nav>
+          <Link to="/">Start a new lobby!</Link>
+        </nav>
 
         <nav>
           {this.props.data.name && (
