@@ -61,6 +61,9 @@ class SignUp extends Component {
   }
 }
 
+
+
+
 function mapStateToProps(reduxState) {
   console.log("reduxState in signup:", reduxState);
   return {
@@ -69,3 +72,4 @@ function mapStateToProps(reduxState) {
 }
 
 export default connect(mapStateToProps)(SignUp);
+
