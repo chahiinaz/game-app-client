@@ -49,7 +49,6 @@ class SignUp extends Component {
             </p>
           </form>
         </div>
-
         <div>
           <nav>
             Already have an account?
