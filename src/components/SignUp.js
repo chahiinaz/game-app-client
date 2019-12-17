@@ -58,4 +58,5 @@ class SignUp extends Component {
   }
 }
 
+
 export default connect()(SignUp);
