@@ -6,9 +6,10 @@ import Login from "./components/Login";
 import Toolbar from "./components/Toolbar";
 import { connect } from "react-redux";
 import LobbyContainer from "./components/LobbyContainer";
+import GameRoom from "./components/GameRoom";
 
 class App extends React.Component {
-  url = "https://intense-brushlands-43540.herokuapp.com";
+  url = "http://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={LobbyContainer} />
+          <Route exact path="/gameroom/:id" component={GameRoom} />
         </Switch>
       </div>
     );
