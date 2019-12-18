@@ -32,9 +32,11 @@ class Lobby extends Component {
     this.setState({ text: value });
   };
   render() {
-    const { gameRoom } = this.props;
-    const list = gameRoom.map(gameRoom => (
-      <p key={gameRoom.id}>{gameRoom.name}</p>
+    const { gameRooms } = this.props;
+    const list = gameRooms.map(gameroom => (
+      <p key={gameroom.id}>
+        <Link to={`/gameroom/${gameroom.id}`}>{gameroom.name}</Link>
+      </p>
     ));
     // if (!this.props.jwt) {
     //   return (
@@ -48,8 +50,8 @@ class Lobby extends Component {
     //     </div>
     //   );
     // }
-    const loading = !this.props.gameRoom;
-    console.log("app props", this.props.gameRoom);
+    const loading = !this.props.gameRooms;
+    console.log("app props", this.props.gameRooms);
 
     return (
       <div>
@@ -66,7 +68,7 @@ class Lobby extends Component {
               <button>submit</button>
             </form>
             <h2>Click on the title to see gameroom</h2>
-            <Link to={`/gameroom/${gameRoom.id}`}>{list}</Link>
+            {list}
           </div>
         )}
       </div>
@@ -77,7 +79,7 @@ class Lobby extends Component {
 function mapStateToProps(reduxstate) {
   console.log("lobbycontainer reduxstate", reduxstate);
   return {
-    gameRoom: reduxstate.lobbyReducer,
+    gameRooms: reduxstate.lobbyReducer,
     jwt: reduxstate.auth.jwt
   };
 }

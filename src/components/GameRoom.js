@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class LobbyList extends Component {
-  // url = "http://localhost:4000/gameroom";
-  // stream = new EventSource(`${this.url}/${this.props.gameRoom.id}`);
   render() {
     const title = "Do you wanna play a game?";
-    const { gameRoom } = this.props;
-    console.log("gameroom props", gameRoom.id);
+    const { gameRooms } = this.props;
+    console.log("gameroom props", gameRooms);
     return (
       <div>
         <h1>{title}</h1>
-        {gameRoom.map((gameroom, index) => {
+        {gameRooms.map((gameroom, index) => {
           return (
             <div key={index}>
               <h2>Gameroom name: {gameroom.name}</h2>
@@ -27,7 +25,7 @@ class LobbyList extends Component {
 function mapStateToProps(reduxstate) {
   // console.log("reduxState", reduxState);
   return {
-    gameRoom: reduxstate.lobbyReducer
+    gameRooms: reduxstate.lobbyReducer
   };
 }
 export default connect(mapStateToProps)(LobbyList);
