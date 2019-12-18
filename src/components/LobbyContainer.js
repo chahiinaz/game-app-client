@@ -38,18 +38,18 @@ class Lobby extends Component {
         <Link to={`/gameroom/${gameroom.id}`}>{gameroom.name}</Link>
       </p>
     ));
-    // if (!this.props.jwt) {
-    //   return (
-    //     <div>
-    //       <Link to="/signup">
-    //         <h2>Please sign up to enter lobby</h2>
-    //       </Link>
-    //       <Link to="/login">
-    //         <h2>Login if you already have an account</h2>
-    //       </Link>
-    //     </div>
-    //   );
-    // }
+    if (!this.props.jwt) {
+      return (
+        <div>
+          <Link to="/signup">
+            <h2>Please sign up to enter lobby</h2>
+          </Link>
+          <Link to="/login">
+            <h2>Login if you already have an account</h2>
+          </Link>
+        </div>
+      );
+    }
     const loading = !this.props.gameRooms;
     console.log("app props", this.props.gameRooms);
 

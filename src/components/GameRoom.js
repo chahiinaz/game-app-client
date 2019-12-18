@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class LobbyList extends Component {
-  url = "http://localhost:4000";
-  stream = new EventSource(
-    `${this.url}/gameroom/${this.props.match.params.id}`
-  );
+  url = `http://localhost:4000/gameroom/${this.props.match.params.id}`;
 
-  componentDidMount() {
-    this.stream.onmessage = event => {
-      const { data } = event;
-      const action = JSON.parse(data);
-      this.props.dispatch(action);
-      console.log("action", action);
-    };
+  async componentDidMount() {
+    try {
+      await fetch(this.url);
+    } catch (error) {
+      console.warn("error test:", error);
+    }
   }
 
   render() {
@@ -28,7 +25,9 @@ class LobbyList extends Component {
             <div key={index}>
               <h2>Gameroom name: {gameroom.name}</h2>
               <h1>id: {gameroom.id}</h1>
-              <button>click to join room</button>
+              <Link to to={`/game`}>
+                <button>click to join room</button>
+              </Link>
             </div>
           );
         })}
