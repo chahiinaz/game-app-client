@@ -49,6 +49,7 @@ class Lobby extends Component {
     //   );
     // }
     const loading = !this.props.gameRoom;
+    console.log("app props", this.props.gameRoom);
 
     return (
       <div>
