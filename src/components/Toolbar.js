@@ -28,7 +28,7 @@ class Toolbar extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  // console.log("reduxState", reduxState);
+  console.log("reduxState in toolbar", reduxState);
   return {
     data: reduxState.auth
   };

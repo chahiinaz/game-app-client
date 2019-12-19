@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("it works", this.props);
+    // console.log("it works", this.props);
     this.props.dispatch(login(this.state.name, this.state.password));
   };
 

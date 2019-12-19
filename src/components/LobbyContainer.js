@@ -30,15 +30,35 @@ class Lobby extends Component {
   };
 
   onChange = event => {
-    const { value } = event.target;
+    const {
+      target: { value }
+    } = event;
     this.setState({ text: value });
   };
+
+  onClick = async gameroomId => {
+    console.log("this button does something! and this is the id: ", gameroomId);
+    try {
+      const response = await superagent.put(`${this.url}/join`).send({
+        gameroomId,
+        userId: 1
+      });
+
+      console.log("response test: ", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
+
     const { gameRooms } = this.props;
     const list = gameRooms.map(gameroom => (
       <p key={gameroom.id}>
         <Link to={`/gameroom/${gameroom.id}`}>{gameroom.name}</Link>
       </p>
+   
+
     ));
     if (!this.props.jwt) {
       return (
