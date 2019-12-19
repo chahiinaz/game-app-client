@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 
 class Lobby extends Component {
   state = {
-    text: ""
+    text: "",
+    //id: 0,
+    gamerooms: []
   };
-  url = "https://intense-brushlands-43540.herokuapp.com";
+  url = "http://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
 
   reset = () => {
@@ -28,14 +30,34 @@ class Lobby extends Component {
   };
 
   onChange = event => {
-    const { value } = event.target;
+    const {
+      target: { value }
+    } = event;
     this.setState({ text: value });
   };
+
+  onClick = async gameroomId => {
+    console.log("this button does something! and this is the id: ", gameroomId);
+    try {
+      const response = await superagent.put(`${this.url}/join`).send({
+        gameroomId,
+        userId: 1
+      });
+
+      console.log("response test: ", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     // console.log("this.props", this.props);
     const { gameRoom } = this.props;
-    const list = gameRoom.map(gameRoom => (
-      <p key={gameRoom.id}>{gameRoom.name}</p>
+    const list = gameRoom.map(gameroom => (
+      <div key={gameroom.id}>
+        {gameroom.name}
+        <button onClick={() => this.onClick(gameroom.id)}>Join Room</button>
+      </div>
     ));
     if (!this.props.jwt) {
       return (

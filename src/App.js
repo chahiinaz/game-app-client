@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import LobbyContainer from "./components/LobbyContainer";
 
 class App extends React.Component {
-  url = "https://intense-brushlands-43540.herokuapp.com";
+  url = "http://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
