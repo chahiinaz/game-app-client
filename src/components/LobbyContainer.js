@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 class Lobby extends Component {
   state = {
     text: "",
+    //id: 0,
     gamerooms: []
   };
   url = "http://localhost:4000";
