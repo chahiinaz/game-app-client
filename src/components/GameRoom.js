@@ -43,7 +43,7 @@ class LobbyList extends Component {
             <div key={index}>
               <h2>Gameroom name: {gameroom.name}</h2>
               <h1>id: {gameroom.id}</h1>
-              <Link to={`/game`}>
+              <Link to={`/choice`}>
                 <button onClick={() => this.onClick(gameroom.id)}>
                   Join Room
                 </button>{" "}
