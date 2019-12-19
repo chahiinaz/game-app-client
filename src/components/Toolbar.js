@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class Toolbar extends Component {
   render() {
-    console.log("this.props.toolbar", this.props);
+    // console.log("this.props.toolbar", this.props);
     return (
       <div>
         <nav>
