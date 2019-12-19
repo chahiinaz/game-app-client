@@ -1,6 +1,7 @@
 const initialState = {
   jwt: null,
-  name: null
+  name: null,
+  id: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,7 +10,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         jwt: action.payload.jwt,
-        name: action.payload.name
+        name: action.payload.name,
+        id: action.payload.id
       };
     }
     case "USER_SIGN_UP": {

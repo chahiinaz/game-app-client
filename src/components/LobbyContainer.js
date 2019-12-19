@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 class Lobby extends Component {
   state = {
     text: "",
-    //id: 0,
     gamerooms: []
   };
   url = "http://localhost:4000";
@@ -56,7 +55,7 @@ class Lobby extends Component {
       );
     }
     const loading = !this.props.gameRooms;
-    console.log("app props", this.props.gameRooms);
+    // console.log("app props", this.props.gameRooms);
 
     return (
       <div>
@@ -82,7 +81,7 @@ class Lobby extends Component {
 }
 
 function mapStateToProps(reduxstate) {
-  console.log("lobbycontainer reduxstate", reduxstate);
+  // console.log("lobbycontainer reduxstate", reduxstate);
   return {
     gameRooms: reduxstate.lobbyReducer,
     jwt: reduxstate.auth.jwt
