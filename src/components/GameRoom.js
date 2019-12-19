@@ -15,11 +15,14 @@ class LobbyList extends Component {
     }
   }
   onClick = async gameroomId => {
-    console.log("this button does something! and this is the id: ", gameroomId);
+    // console.log(
+    //   "this button does something! and this is the id: ",
+    //   this.props.user.id
+    // );
     try {
       const response = await superagent.put(`${this.joinUrl}/join`).send({
         gameroomId,
-        userId: 1
+        userId: this.props.user.id
       });
 
       console.log("response test: ", response);
@@ -56,7 +59,8 @@ class LobbyList extends Component {
 function mapStateToProps(reduxstate) {
   console.log("reduxState gameroom", reduxstate);
   return {
-    gameRooms: reduxstate.lobbyReducer
+    gameRooms: reduxstate.lobbyReducer,
+    user: reduxstate.auth
   };
 }
 export default connect(mapStateToProps)(LobbyList);

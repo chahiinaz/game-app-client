@@ -10,17 +10,17 @@ export function login(name, password) {
       }
     })
       .then(data => {
-        dispatch(userLoggedIn(data.jwt, data.name));
+        dispatch(userLoggedIn(data.jwt, data.name, data.id));
       })
       .catch(err => console.log("Error!", err));
   };
 }
 
 // An action creator
-export function userLoggedIn(jwt, name) {
+export function userLoggedIn(jwt, name, id) {
   return {
     type: "USER_LOGGED_IN",
-    payload: { jwt, name }
+    payload: { jwt, name, id }
   };
 }
 
@@ -41,7 +41,7 @@ export function signUp(name, password) {
       }
     })
       .then(data => {
-        const action = signUpSuccess(data.jwt, data.name);
+        const action = signUpSuccess(data.jwt, data.name, data.id);
         dispatch(action);
       })
       .catch(err => console.log("err", err));
