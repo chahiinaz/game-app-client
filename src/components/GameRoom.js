@@ -54,7 +54,7 @@ class LobbyList extends Component {
 }
 
 function mapStateToProps(reduxstate) {
-  // console.log("reduxState gameroom", reduxstate);
+  console.log("reduxState gameroom", reduxstate);
   return {
     gameRooms: reduxstate.lobbyReducer
   };
