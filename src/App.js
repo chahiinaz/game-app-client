@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import LobbyContainer from "./components/LobbyContainer";
 import GameRoom from "./components/GameRoom";
 import Game from "./components/Game";
+import LoginContainer from "./components/LoginContainer";
 
 class App extends React.Component {
   url = "http://localhost:4000";
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route exact path="/" component={LobbyContainer} />
           <Route exact path="/gameroom/:id" component={GameRoom} />
           <Route exact path="/game" component={Game} />
+          <Route exact path="/test" component={LoginContainer} />
         </Switch>
       </div>
     );
