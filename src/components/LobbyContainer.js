@@ -51,13 +51,14 @@ class Lobby extends Component {
   };
 
   render() {
-    // console.log("this.props", this.props);
-    const { gameRoom } = this.props;
-    const list = gameRoom.map(gameroom => (
-      <div key={gameroom.id}>
-        {gameroom.name}
-        <button onClick={() => this.onClick(gameroom.id)}>Join Room</button>
-      </div>
+
+    const { gameRooms } = this.props;
+    const list = gameRooms.map(gameroom => (
+      <p key={gameroom.id}>
+        <Link to={`/gameroom/${gameroom.id}`}>{gameroom.name}</Link>
+      </p>
+   
+
     ));
     if (!this.props.jwt) {
       return (
@@ -71,21 +72,36 @@ class Lobby extends Component {
         </div>
       );
     }
+    const loading = !this.props.gameRooms;
+    console.log("app props", this.props.gameRooms);
+
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <input type="text" onChange={this.onChange} value={this.state.text} />
-          <button>submit</button>
-        </form>
-        <div>{list}</div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            <form onSubmit={this.onSubmit}>
+              <input
+                type="text"
+                onChange={this.onChange}
+                value={this.state.text}
+              />
+              <button>submit</button>
+            </form>
+            <h2>Click on the title to see gameroom</h2>
+            {list}
+          </div>
+        )}
       </div>
     );
   }
 }
+
 function mapStateToProps(reduxstate) {
-  // console.log("app reduxstate", reduxstate);
+  console.log("lobbycontainer reduxstate", reduxstate);
   return {
-    gameRoom: reduxstate.lobbyReducer,
+    gameRooms: reduxstate.lobbyReducer,
     jwt: reduxstate.auth.jwt
   };
 }
