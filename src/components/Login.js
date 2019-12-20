@@ -22,6 +22,9 @@ class LoginPage extends React.Component {
   };
 
   render() {
+    if (this.props.data.jwt) {
+      this.props.history.push("/");
+    }
     return (
       <div>
         <h1>Login here!</h1>
@@ -60,4 +63,11 @@ class LoginPage extends React.Component {
   }
 }
 
-export default connect()(LoginPage);
+function mapStateToProps(reduxState) {
+  console.log("ReduxState in login: ", reduxState);
+  return {
+    data: reduxState.auth
+  };
+}
+
+export default connect(mapStateToProps)(LoginPage);
