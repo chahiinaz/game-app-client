@@ -25,7 +25,6 @@ class Game extends Component {
         userId: this.props.user.id,
         choice: true
       });
-
       console.log("response test2: ", response);
     } catch (error) {
       console.log(error);
